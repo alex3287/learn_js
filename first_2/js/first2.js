@@ -6,4 +6,5 @@ multiplication = x1*x2*x3*x4*x5;
 power = multiplication ** 3;
 firstTwo = power / 100000 |0;
 document.write("<h2>",'результат расчетов = ',firstTwo,"</h2>");
+console.log(power);
 console.log(firstTwo);
