@@ -83,7 +83,11 @@ approve_2.addEventListener('click', function() {
 
 calculate.addEventListener('click', function() {
   if (appData.budget != undefined) {
-    appData.moneyPerDay = (appData.budget / 30).toFixed();
+      if (+expensesValue.textContent > 0) {
+        appData.moneyPerDay = ((appData.budget - (+expensesValue.textContent)) / 30).toFixed();
+      } else {
+        appData.moneyPerDay = (appData.budget / 30).toFixed();
+      }
     dayBudgetValue.textContent = appData.moneyPerDay;
     if (appData.moneyPerDay < 100) {
       levelValue.textContent = "Минимальный уровень достатка";
@@ -108,10 +112,8 @@ income.addEventListener('input', function() {
 flag.addEventListener('click', function() {
     if (appData.savings == true) {
         appData.savings = false;
-        console.log(appData.savings);
     } else {
         appData.savings = true;
-        console.log(appData.savings);
     }
 });
 
@@ -140,8 +142,6 @@ percent.addEventListener('input', function() {
     }
 });
 
-//console.log(monthSavingsValue);
-
   var appData = {
     budget: money,
     timeData: time,
@@ -149,5 +149,5 @@ percent.addEventListener('input', function() {
     optionalExpenses: {},
     income:[],
     savings: false
-  }
+  };
   
