@@ -38,7 +38,11 @@ let income = document.querySelector('.choose-income'),
 
 
 let money, time;
-  
+
+calculate.disabled = true;
+approve_1.disabled = true;
+approve_2.disabled = true;
+
 startCalculating.addEventListener('click', function() {
     time = prompt('Введите дату в формате YYYY-MM-DD', '');
     money = +prompt('Ваш бюджет на месяц?', '');
@@ -52,8 +56,22 @@ startCalculating.addEventListener('click', function() {
     year.value = new Date(Date.parse(time)).getFullYear();
     month.value = new Date(Date.parse(time)).getMonth() + 1;
     day.value = new Date(Date.parse(time)).getDate();
+    calculate.disabled = false;
 });
-  
+
+// активация кнопки approve_1
+mandatoryExpense[mandatoryExpense.length - 1].addEventListener('input', function() {
+    if (mandatoryExpense[0].value != '' && mandatoryExpense[1].value != '' && mandatoryExpense[2].value != '' && mandatoryExpense[3].value != '') {
+        approve_1.disabled = false;
+    }
+});
+
+// активация кнопки approve_2
+costs[0].addEventListener('input', function() {
+    approve_2.disabled = false;
+});
+    
+
 approve_1.addEventListener('click', function() {
   let sum = 0;
 
