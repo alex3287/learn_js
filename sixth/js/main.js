@@ -28,8 +28,8 @@ let costs = document.querySelectorAll('.optionalexpenses-item');
 
 // task 6
 let income = document.querySelector('.choose-income'),
-  save = document.getElementsByClassName('checksavings'),
-  flag = save[0].querySelector('input'),
+  //save = document.getElementsByClassName('checksavings'),
+  flag = document.getElementsByClassName('checksavings')[0], //save[0].querySelector('input'),
   summa = document.querySelector('.choose-sum'),
   percent = document.querySelector('.choose-percent'),
   year = document.querySelector('.year-value'),
@@ -105,61 +105,49 @@ income.addEventListener('input', function() {
   incomeValue.textContent = appData.income;
 });
 
+flag.addEventListener('click', function() {
+    if (appData.savings == true) {
+        appData.savings = false;
+        console.log(appData.savings);
+    } else {
+        appData.savings = true;
+        console.log(appData.savings);
+    }
+});
+
+summa.addEventListener('input', function() {
+    if (appData.savings == true) {
+        let sum = +summa.value,
+            per = +percent.value;
+        
+            appData.monthIncome = sum / 100 / 12 * per;
+            appData.yearIncome = sum / 100 * per;
+        monthSavingsValue.textContent = appData.monthIncome.toFixed(1);
+        yearSavingsValue.textContent = appData.yearIncome.toFixed(1);
+    }
+});
+
+percent.addEventListener('input', function() {
+    if (appData.savings == true) {
+        let sum = +summa.value,
+            per = +percent.value;
+        
+            appData.monthIncome = sum / 100 / 12 * per;
+            appData.yearIncome = sum / 100 * per;
+        monthSavingsValue.textContent = appData.monthIncome.toFixed(1);
+        yearSavingsValue.textContent = appData.yearIncome.toFixed(1);
+
+    }
+});
+
+//console.log(monthSavingsValue);
+
   var appData = {
     budget: money,
     timeData: time,
     expenses: {},
     optionalExpenses: {},
     income:[],
-    savings: true,
-    chooseExpenses: function() { },
-    detectDayBudger: function() {  // функция расчет бюджета на день
-      
-      alert("Ваш бюджет на один день: " + appData.moneyPerDay + " рублей");
-    },
-    detectLevel: function() {     // функция расчета уровня достатка
-      
-    },
-    checkSavings: function() {
-      if (appData.savings == true) {
-        let save = +prompt("Какова сумма накоплений?"),
-            percent = +prompt("Под какой процент?");
-    
-        appData.monthIncome = save / 100 / 12 * percent;
-        alert("Доход в месяц с вашего депозита: " + appData.monthIncome);
-      }
-    },
-    chooseOptExpenses: function() {   // финкуия по заполнению необязательных статей бюджета
-      for (let i=0; i < 3; i++) {
-        let a = prompt('Введите необязательную статью расходов в этом месяце', '');
-      
-        if ((typeof(a)) === 'string' && (typeof(a)) != null && a != '' && a.length < 50) {
-          console.log("done");
-          appData.optionalExpenses[i+1] = a;
-        } else {
-          i--;
-        }
-      }
-    },
-    chooseIncome: function() {
-        let items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)','');
-        while (items == "" || items == null) {
-          items = prompt('Что принесет дополнительный доход? (Перечислите через запятую)','');
-        }
-        appData.income = items.split(', ');
-        appData.income.push(prompt('Может что-то ещё?'),'');
-        appData.income.sort();
-  
-        let arr = appData.income;
-        arr.forEach(function(item, i, arr) {
-          if (i != 0) {
-            alert("Способы доп.заработка: " + i +' '+ item);
-          }
-        });
-    }
-  };
-  console.log("Наша программа включает в себя данные:");
-  for (let key in appData) {
-    console.log(key);
+    savings: false
   }
   
