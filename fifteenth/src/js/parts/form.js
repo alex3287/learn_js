@@ -32,7 +32,6 @@ function form() {
 
   statusMessage.classList.add('status');
 
-
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     form.appendChild(statusMessage);
@@ -52,11 +51,8 @@ function form() {
   });
 
   // валидация формы
-
   let valid = form.querySelector('.popup-form__input');
   valid.pattern = "[+][0-9]{11}";
-
-
 
   // нижняя форма
 
@@ -64,14 +60,12 @@ function form() {
     inputs = formLower.getElementsByTagName('input'),
     statusMessage_2 = document.createElement('div');
 
-
   statusMessage_2.classList.add('status');
 
   formLower.addEventListener('submit', function (event) {
     event.preventDefault();
     formLower.appendChild(statusMessage_2);
     let formData_2 = new FormData(formLower);
-
 
     function clearInput_2() {
       for (let i = 0; i < inputs.length; i++) {
@@ -85,6 +79,10 @@ function form() {
       .catch(() => statusMessage_2.innerHTML = message.failure)
       .then(clearInput_2)
   });
+// валидация формы
+let valid2 = formLower.querySelectorAll('input')[1];
+console.log(valid2);
+valid2.pattern = "[+][0-9]{11}";
 }
 
 module.exports = form;
