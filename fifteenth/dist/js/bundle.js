@@ -111,7 +111,9 @@ function calc() {
     if (restDays.value == '' || persons.value == '') {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+     let a = total;
+     totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+      //totalValue.innerHTML = total;
     }
   });
 
@@ -122,7 +124,9 @@ function calc() {
     if (persons.value == '' || restDays.value == '') {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+      //totalValue.innerHTML = total;
+      let a = total;
+      totalValue.innerHTML = a * place.options[place.selectedIndex].value;
     }
   });
 
@@ -244,7 +248,6 @@ function form() {
   });
 // валидация формы
 let valid2 = formLower.querySelectorAll('input')[1];
-console.log(valid2);
 valid2.pattern = "[+][0-9]{11}";
 }
 
@@ -413,7 +416,7 @@ module.exports = tabs;
 /***/ (function(module, exports) {
 
 function timer() {
-  let deadline = '2019-5-19';
+  let deadline = '2019-5-21';
 
   function add_0(data) {
     return data > 9 ? data : data = '0' + data;

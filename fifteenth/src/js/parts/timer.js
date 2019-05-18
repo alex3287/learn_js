@@ -1,5 +1,5 @@
 function timer() {
-  let deadline = '2019-5-19';
+  let deadline = '2019-5-21';
 
   function add_0(data) {
     return data > 9 ? data : data = '0' + data;

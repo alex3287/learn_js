@@ -81,7 +81,6 @@ function form() {
   });
 // валидация формы
 let valid2 = formLower.querySelectorAll('input')[1];
-console.log(valid2);
 valid2.pattern = "[+][0-9]{11}";
 }
 

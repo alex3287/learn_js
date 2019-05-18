@@ -16,7 +16,9 @@ function calc() {
     if (restDays.value == '' || persons.value == '') {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+     let a = total;
+     totalValue.innerHTML = a * place.options[place.selectedIndex].value;
+      //totalValue.innerHTML = total;
     }
   });
 
@@ -27,7 +29,9 @@ function calc() {
     if (persons.value == '' || restDays.value == '') {
       totalValue.innerHTML = 0;
     } else {
-      totalValue.innerHTML = total;
+      //totalValue.innerHTML = total;
+      let a = total;
+      totalValue.innerHTML = a * place.options[place.selectedIndex].value;
     }
   });
 
