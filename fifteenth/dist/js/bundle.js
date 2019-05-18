@@ -413,15 +413,17 @@ module.exports = tabs;
 /***/ (function(module, exports) {
 
 function timer() {
-  let deadline = '2019-5-22';
+  let deadline = '2019-5-19';
 
   function add_0(data) {
     return data > 9 ? data : data = '0' + data;
   };
 
   function getTimeRemaining(endTime) {
-    let total = Date.parse(endTime) - Date.parse(new Date()),
-      seconds = Math.floor((total / 1000) % 60),
+    let timeZone = new Date().getTimezoneOffset()*60000,
+      total = Date.parse(endTime) - Date.parse(new Date());
+      total = total + timeZone;
+      let seconds = Math.floor((total / 1000) % 60),
       minutes = Math.floor((total / 1000 / 60) % 60),
       hours = Math.floor(total / (1000 * 60 * 60));
 
