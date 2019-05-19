@@ -48,13 +48,13 @@ function calc() {
 
   persons.onkeypress = function (event) {
     event = event || window.event;
-    if (event.charCode && (event.charCode > 42 && event.charCode < 47 || event.charCode == 101))
+    if (event.charCode && (event.charCode < 48 || event.charCode > 57))
       return false;
   };
 
   restDays.onkeypress = function (event) {
     event = event || window.event;
-    if (event.charCode && (event.charCode > 42 && event.charCode < 47 || event.charCode == 101))
+    if (event.charCode && (event.charCode < 48 || event.charCode > 57))
       return false;
   };
 }

@@ -82,6 +82,15 @@ function form() {
 // валидация формы
 let valid2 = formLower.querySelectorAll('input')[1];
 valid2.pattern = "[+][0-9]{11}";
+
+// запрет на ввод букв
+valid2.onkeypress = function (event) {
+  event = event || window.event;
+  if (event.charCode && (event.charCode < 48 || event.charCode > 57))
+    return false;
+};
+
+console.log(valid2);
 }
 
 module.exports = form;
